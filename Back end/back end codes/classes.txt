@@ -1,0 +1,9 @@
+bicycle
+bus
+car
+e-bike
+jeep
+motorcycle
+tricycle
+truck
+van

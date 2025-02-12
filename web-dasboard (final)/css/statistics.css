@@ -1,0 +1,301 @@
+/* statisctics page */
+body {
+  min-width: none;
+}
+
+#search-calendar {
+  top: 12%;
+}
+
+.searchbar-div {
+  width: 200px;
+}
+
+.chart-section {
+  margin: 150px 35px 20px 215px;
+  padding-bottom: 50px;
+  /* background-color: #49c3fb; */
+}
+
+.charts {
+  /* background-color: #607985; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.lane-charts {
+  width: 100%;
+  /* background-color: #607985; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* chart container */
+.chart-part {
+  /* background-color: #607985; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  height: 440px;
+  white-space: nowrap;
+  /* z-index: -1; */
+}
+
+#left-lane-chart,
+#right-lane-chart {
+  height: 100%;
+  width: 100%;
+  /* white-space: nowrap; */
+  /* min-width: 3000px; */
+}
+
+/* text/headings/span */
+h2,
+h3,
+h4,
+h5,
+.flowspeed,
+#vehicle-class {
+  color: #fff;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+}
+
+h3 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+h4 {
+  margin: 25px 0 10px;
+}
+
+/* vehicle class text (car, bus, etc.) */
+#vehicle-class {
+  font-size: 2.2rem;
+}
+
+.arrow-next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 12px;
+}
+
+.arrow-next-img,
+.arrow-prev-img {
+  width: 20px;
+  height: 20px;
+}
+
+.arrow-prev-img {
+  transform: scaleX(-1);
+}
+
+#arrow-prev-btn {
+  margin-right: 20px;
+}
+
+#arrow-next-btn {
+  margin-left: 20px;
+}
+
+#arrow-next-btn,
+#arrow-prev-btn {
+  border-radius: 50%;
+  background-color: var(--purple-nav);
+  border: none;
+  padding: 10px;
+}
+
+/* statistics text */
+.stats-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.stats-box {
+  width: 160px;
+  padding: 15px;
+  border-radius: 20px;
+  /* background-color: var(--blue2); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mean-box {
+  background-color: var(--blue2);
+}
+
+.median-box {
+  background-color: var(--dark-pink);
+}
+
+.mode-box {
+  background-color: var(--purple-nav-active);
+}
+
+.stats-boxes .stats-box > span {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+}
+
+/* statistics / average text */
+h4,
+h5,
+.stats-title,
+.flowspeed,
+.overall-stats {
+  font-size: 2rem;
+}
+
+h5 {
+  margin: 15px 0;
+}
+
+.overall-stats {
+  margin-top: 60px;
+}
+
+.stats-title {
+  margin-top: 5px;
+}
+
+@media only screen and (max-width: 1500px) {
+  .charts {
+    row-gap: 40px;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .chart-section {
+    margin: 30px 30px 20px 40px;
+    padding-bottom: 100px;
+  }
+
+  #search-calendar {
+    margin: 170px 0 0;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .average-box {
+    height: 50px;
+  }
+
+  #search-calendar {
+    margin: 150px 0 0;
+  }
+
+  .chart-part {
+    height: 380px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .chart-part {
+    height: 300px;
+  }
+
+  h4,
+  h5,
+  .stats-title,
+  .flowspeed,
+  .overall-stats {
+    font-size: 1.8rem;
+  }
+
+  #search-calendar {
+    margin: 130px 0 0;
+  }
+
+  .stats-box {
+    width: 130px;
+  }
+
+  .stats-boxes .stats-box > span,
+  .stats-title,
+  h5 {
+    font-size: 1.8rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h2 {
+    font-size: 2.2rem;
+  }
+
+  h3,
+  #vehicle-class {
+    font-size: 2rem;
+  }
+
+  .arrow-next-img,
+  .arrow-prev-img {
+    width: 15px;
+    height: 15px;
+  }
+
+  .searchbar-div {
+    width: 180px;
+    height: 45px;
+  }
+
+  .todaytext,
+  #dateinput {
+    font-size: 1.6rem;
+  }
+
+  .stats-boxes {
+    gap: 20px;
+  }
+
+  .stats-box {
+    width: 115px;
+    padding: 12px;
+  }
+
+  .stats-boxes .stats-box > span,
+  .stats-title,
+  h5 {
+    font-size: 1.7rem;
+  }
+
+  h4,
+  h5,
+  .stats-title,
+  .flowspeed,
+  .overall-stats {
+    font-size: 1.7rem;
+  }
+
+  #search-calendar {
+    margin: 120px 0 0;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  #search-calendar {
+    margin: 110px 0 0;
+  }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- head, links, src -->
+    <script src="../js/head_fetch.js"></script>
+
+    <!-- custom styling -->
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body>
+    <section id="dashboard-title">
+      <!-- call function to show header -->
+      <script src="../js/web_dash.js"></script>
+
+      <div id="profile-section">
+        <!-- call function to show profile/logout -->
+        <script src="../js/profile_section.js"></script>
+      </div>
+
+      <script>
+        document.getElementById("profile-img").addEventListener("click", () => {
+          // redirect to edit account page
+          window.location.href = "edit_useraccount1.html";
+        });
+      </script>
+    </section>
+
+    <!-- selecting branch -->
+    <div id="branch-section">
+      <span class="branch-text">Select branch: </span>
+      <div id="select-branch">
+        <select
+          name="branch"
+          id="branch"
+          class="form-select"
+          onchange="selectBranch(this.options[this.selectedIndex].value)"
+          required
+        >
+          <option value="cam1" selected disabled>Camera 1 - Alangilan</option>
+          <option value="cam2">Camera 2 - Kumintang</option>
+        </select>
+      </div>
+    </div>
+
+    <script>
+      //script for selecting branch
+      function selectBranch(value) {
+        // var selectedId = this.id;
+        // console.log(value);
+        if (value == "cam1") {
+          location.href = "dashboard_branch1.html";
+        } else if (value == "cam2") {
+          location.href = "../branch2/dashboard_branch2.html";
+        }
+      }
+    </script>
+
+    <!--call date picker function-->
+    <div id="search-calendar">
+      <script src="../js/date_picker.js"></script>
+    </div>
+
+    <section id="navigation-bar">
+      <!-- call function to show navigation bar -->
+      <script src="../js/navigation_branch1.js"></script>
+    </section>
+
+    <section class="chart-section">
+      <h2>Vehicle Count</h2>
+      <div class="charts">
+        <div class="lane-charts">
+          <h3>Left Lane Vehicles</h3>
+          <div class="arrow-next">
+            <button type="button" id="arrow-prev-btn">
+              <img
+                src="../images/icons8-right-arrow-96.png"
+                class="arrow-prev-img"
+                alt="button arrow prev"
+              />
+            </button>
+
+            <span id="vehicle-class"></span>
+            <button type="button" id="arrow-next-btn">
+              <img
+                src="../images/icons8-right-arrow-96.png"
+                class="arrow-next-img"
+                alt="button arrow next"
+              />
+            </button>
+          </div>
+
+          <div class="chart-part">
+            <canvas id="left-lane-chart"></canvas>
+          </div>
+        </div>
+
+        <div class="lane-charts">
+          <h3>Right Lane Vehicles</h3>
+
+          <div class="chart-part">
+            <canvas id="right-lane-chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- user logout / check if user is logged in before proceeding to page -->
+    <script src="../js/login_user.js"></script>
+
+    <!-- for fetching data on firebase and chart configurations-->
+    <!-- <script type="module" src="../js/dashboard1_fetch.js"></script> -->
+    <script type="module" src="../js/dashboard1_dbfetch.js"></script>
+  </body>
+</html>

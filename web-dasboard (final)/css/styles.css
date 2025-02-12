@@ -1,0 +1,499 @@
+/* for all pages */
+:root {
+  --violet-bg: #381f50;
+  --purple: #8a08a5;
+  --purple-nav: #8616cb;
+  --purple-nav-active: #9e45d5;
+  --purpleicon: #8e36a4;
+  --blue: #49c3fb;
+  --blue2: #65a6fa;
+  --dark-pink: #d0005f;
+  --pink-shadow2: #955d65;
+  --pink-shadow: #eec2ab;
+  --h1-bg: #e3e3e3;
+  --car-chart: #00cadc;
+  --gray: #7c7c7c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--violet-bg);
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Web dashboard header */
+#dashboard-title {
+  width: 100%;
+  /* height: 15vh;  */
+  position: fixed;
+  top: 0;
+  display: flex;
+  z-index: 1000;
+}
+
+.parallelogram {
+  background-color: var(--h1-bg);
+  padding: 15px 15px 30px;
+  position: relative;
+  width: 490px;
+  height: 15vh;
+  transform: skewX(-25deg);
+  margin-left: 28px;
+}
+
+#dash-heading,
+#vehicle-detection {
+  color: var(--dark-pink);
+  transform: skewX(25deg); /* to put text correctly */
+  text-align: center;
+}
+
+#dash-heading {
+  font-weight: 600;
+  color: var(--dark-pink);
+  font-size: 4.5rem;
+  text-transform: uppercase;
+  text-shadow: -2px 1px 1px var(--pink-shadow);
+  /*horizontal offset - right(+) left(-), vertical offset - down(+) up(-), blue effect, color*/
+}
+
+#vehicle-detection {
+  font-weight: 400;
+  font-size: 2.1rem;
+  margin-top: -8px;
+}
+
+.dash-underbox {
+  width: 85%;
+  height: 30px;
+  background-color: var(--purple);
+  position: absolute;
+  right: 0;
+  bottom: -15px;
+}
+
+/* navigation bar */
+#navbar {
+  height: 75vh;
+  width: 200px;
+  background-color: var(--purple-nav);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-radius: 0 30px 30px 0; /*  top-left corner, top-right, bottom-right, bottom-left */
+  padding: 20px;
+  margin-left: -18px;
+  z-index: 100;
+}
+
+nav > ul {
+  list-style: none;
+}
+
+nav > ul > li {
+  width: 100%;
+  transition: all ease-in-out 500ms ease;
+  border-radius: 25px;
+  margin: 10px 0;
+}
+
+nav > ul > li:hover,
+nav > ul > li > a.active {
+  background-color: var(--purple-nav-active);
+  border-radius: 25px;
+}
+
+nav > ul > li:hover {
+  color: var(--violet-bg);
+}
+
+nav > ul > li > a.active {
+  padding: 15px 0;
+}
+
+nav > ul > li > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 0;
+}
+/* navigation icons */
+.class-icon,
+.timedate-icon,
+.stats-icon,
+.video-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.class-icon {
+  background-image: url(../images/icons8-hierarchy-100.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.class-icon:hover {
+  background-image: url(../images/icons8-hierarchyv-100.png);
+}
+
+.timedate-icon {
+  background-image: url(../images/icons8-calendar-100.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.timedate-icon:hover {
+  background-image: url(../images/icons8-calendarv-100.png);
+}
+
+.stats-icon {
+  background-image: url(../images/icons8-combo-chart-100.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.stats-icon:hover {
+  background-image: url(../images/icons8-combo-chartv-100.png);
+}
+
+.video-icon {
+  background-image: url(../images/icons8-video-100.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.video-icon:hover {
+  background-image: url(../images/icons8-videov-100.png);
+}
+
+nav > ul > li > a:hover {
+  /* color: var(--blue-hover); */
+  color: #fff;
+  text-decoration: none;
+}
+
+/* profile */
+#profile-section {
+  background-color: var(--purple-nav);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 55px;
+  width: 280px;
+  padding: 25px 20px;
+  position: absolute;
+  right: 0;
+  border-radius: 0 0 20px 20px;
+  z-index: 100;
+}
+
+#profile-img {
+  width: 35px;
+  height: 35px;
+}
+
+#logout-img {
+  width: 30px;
+  height: 30px;
+}
+
+#logout-btn,
+#profile-settings-btn {
+  border: none;
+  background-color: var(--purple-nav);
+  border-radius: 50%;
+  padding: 5px;
+}
+
+#username-text {
+  color: #fff;
+  font-size: 1.8rem;
+  margin: 3px 0 0 -25px;
+}
+
+.navi-text {
+  font-size: 1.8rem;
+  margin: 1px 0 3px;
+}
+
+/* date picker */
+#search-calendar {
+  display: flex;
+  align-items: center;
+  /* padding-top: 30px; */
+  position: absolute;
+  right: 4px;
+}
+
+.todaytext {
+  color: #fff;
+  font-size: 1.7rem;
+  margin-left: 10px;
+}
+
+.searchbar-div {
+  margin-left: 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+    to right,
+    var(--purple),
+    var(--purpleicon),
+    var(--purple-nav),
+    var(--purple-nav-active)
+  );
+  padding: 5px;
+  border-radius: 25px;
+  position: relative;
+  transition: background 0.25s; /*transition for focus*/
+}
+
+.searchbar-div:focus-within {
+  /*put focus on the searchbar div/calendar picker*/
+  box-shadow: 0 0 3px var(--car-chart);
+}
+
+#dateinput {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  padding: 15px;
+  font-size: 1.7rem;
+  border: none;
+}
+
+@media only screen and (max-width: 980px) {
+  #search-calendar {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  #profile-section {
+    height: 60px;
+    width: 100px;
+    padding: 30px 15px;
+  }
+
+  #profile-img {
+    width: 30px;
+    height: 30px;
+  }
+
+  #logout-img {
+    width: 25px;
+    height: 25px;
+  }
+
+  /* hide the username text */
+  #username-text {
+    display: none;
+  }
+
+  /* move navbar to bottom*/
+  #navbar {
+    height: 13vh;
+    width: 100%;
+    /* border-radius: 30px 30px 0 0; */
+    border-radius: 0;
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  nav > ul {
+    display: flex;
+    flex-direction: row;
+  }
+
+  nav > ul > li {
+    margin: 5px 10px 0;
+  }
+
+  nav > ul > li > a {
+    font-size: 1.6rem;
+    padding: 6px 0;
+  }
+
+  nav > ul > li > a.active {
+    padding: 6px 0;
+  }
+
+  .class-icon,
+  .timedate-icon,
+  .stats-icon,
+  .video-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .navi-text {
+    font-size: 1.5rem;
+  }
+
+  #search-calendar {
+    flex-direction: row;
+    position: static;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #dash-heading {
+    font-size: 4.4rem;
+  }
+
+  .parallelogram {
+    width: 470px;
+  }
+
+  h3 {
+    font-size: 2.2rem;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  #dash-heading {
+    font-size: 4rem;
+  }
+
+  .parallelogram {
+    width: 430px;
+    height: 14vh;
+    padding: 15px 15px 28px;
+  }
+
+  .dash-underbox {
+    height: 28px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .parallelogram {
+    width: 390px;
+    height: 13vh;
+    padding: 15px 15px 27px;
+  }
+
+  .dash-underbox {
+    height: 27px;
+  }
+
+  #dash-heading {
+    font-size: 3.6rem;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .parallelogram {
+    width: 335px;
+    height: 12vh;
+    padding: 15px 15px 26px;
+  }
+
+  #dash-heading {
+    font-size: 3.2rem;
+  }
+
+  #vehicle-detection {
+    font-size: 1.5rem;
+    margin-top: -5px;
+  }
+
+  .dash-underbox {
+    height: 26px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .parallelogram {
+    width: 300px;
+    height: 11vh;
+    padding: 15px 15px 25px;
+  }
+
+  .dash-underbox {
+    height: 25px;
+  }
+
+  #dash-heading {
+    font-size: 2.8rem;
+  }
+
+  .class-icon,
+  .timedate-icon,
+  .stats-icon,
+  .video-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .navi-text {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .parallelogram {
+    width: 285px;
+    height: 10vh;
+    padding: 15px 15px 24px;
+  }
+
+  .dash-underbox {
+    height: 24px;
+  }
+
+  #dash-heading {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .parallelogram {
+    width: 275px;
+    height: 9vh;
+    padding: 15px 15px 23px;
+  }
+
+  .dash-underbox {
+    height: 23px;
+  }
+
+  #dash-heading {
+    font-size: 2.3rem;
+  }
+
+  #profile-section {
+    width: 90px;
+  }
+
+  #profile-img {
+    width: 28px;
+    height: 28px;
+  }
+
+  #logout-img {
+    width: 23px;
+    height: 23px;
+  }
+}

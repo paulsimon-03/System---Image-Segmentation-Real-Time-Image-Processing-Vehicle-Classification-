@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head id="head">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/register.css" />
+  </head>
+
+  <body>
+    <div class="registerForm">
+      <h4 id="registerText">Login</h4>
+      <hr />
+      <form id="mainForm">
+        <label for="email_add">Email Address</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1"
+            ><i class="fas fa-user"></i
+          ></span>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="johndoe@gmail.com"
+            id="email_add"
+            aria-label="Email Address"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+
+        <label for="password">Password</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1"
+            ><i class="fas fa-lock"></i
+          ></span>
+          <input
+            type="password"
+            class="form-control"
+            aria-label="Password"
+            name="password"
+            id="password"
+            aria-describedby="basic-addon1"
+            required
+          />
+          <!-- for toggling password -->
+          <span class="input-group-text">
+            <button class="btn" type="button" id="togglePassword">
+              <i class="fas fa-eye"></i>
+            </button>
+          </span>
+        </div>
+        <br />
+
+        <div class="row">
+          <div class="col-6">
+            <button class="btn btn-info" type="submit" name="submit">
+              Login
+            </button>
+          </div>
+          <div class="col-6">
+            <a href="register_firestore.html"
+              ><button
+                class="btn btn-primary"
+                type="button"
+                name="register"
+                id="registerBtn"
+              >
+                Register
+              </button></a
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- script for getting data from firebase -->
+    <script type="module">
+      import {
+        collection,
+        getDocs,
+        getDoc,
+        doc,
+        db,
+        app,
+      } from "./js/connect.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+
+      const auth = getAuth(app);
+
+      let givenName = document.getElementById("givenName");
+      let username = document.getElementById("username");
+      let email_add = document.getElementById("email_add");
+      let password = document.getElementById("password");
+      let mainForm = document.getElementById("mainForm");
+
+      let loginUser = (evt) => {
+        evt.preventDefault();
+
+        signInWithEmailAndPassword(auth, email_add.value, password.value)
+          .then(async (credentials) => {
+            console.log(credentials);
+            var ref = doc(db, "user_accounts", credentials.user.uid);
+            const docSnap = await getDoc(ref);
+
+            if (docSnap.exists()) {
+              sessionStorage.setItem(
+                "user-info",
+                JSON.stringify({
+                  givenName: docSnap.data().givenName,
+                  userName: docSnap.data().userName,
+                })
+              );
+              sessionStorage.setItem(
+                "user-creds",
+                JSON.stringify(credentials.user)
+              );
+              window.location.href = "branch1/dashboard_branch1.html";
+            }
+          })
+          .catch((error) => {
+            alert(error.message);
+            console.log(error.code);
+            console.log(error.message);
+          });
+      };
+
+      mainForm.addEventListener("submit", loginUser);
+    </script>
+
+    <!-- for toggling password -->
+    <script src="js/toggle_password.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

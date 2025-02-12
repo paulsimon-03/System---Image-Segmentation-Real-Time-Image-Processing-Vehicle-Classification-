@@ -1,0 +1,125 @@
+/* time & date styling */
+
+.piechart-section {
+  margin: 160px 30px 10px 230px;
+  /* background-color: #49c3fb; */
+}
+
+.chart-box {
+  /* background-color: #607985; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.lane-charts {
+  width: 480px;
+  /* height: 500px; */
+  /* background-color: #607985; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#left-lane-pie,
+#right-lane-pie {
+  width: 100%;
+}
+
+#search-calendar {
+  top: 12%;
+}
+
+.searchbar-div {
+  width: 250px;
+}
+
+.count-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+#total-count,
+.lanetext,
+#left-total-count,
+#right-total-count {
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 1200px) {
+  .piechart-section {
+    margin: 180px 30px 10px 230px;
+    padding-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .piechart-section {
+    margin: 30px 25px 10px 40px;
+    padding-bottom: 100px;
+  }
+
+  #search-calendar {
+    margin: 150px 0 0;
+  }
+
+  .lane-charts {
+    width: 400px;
+  }
+
+  #total-count,
+  .lanetext,
+  #left-total-count,
+  #right-total-count {
+    font-size: 1.9rem;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .piechart-section {
+    margin: 40px 25px 10px 40px;
+  }
+
+  .chart-box {
+    row-gap: 30px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .searchbar-div {
+    width: 245px;
+    height: 45px;
+  }
+
+  #search-calendar {
+    margin: 130px 0 0;
+  }
+
+  .todaytext,
+  #dateinput {
+    font-size: 1.6rem;
+  }
+
+  #total-count,
+  .lanetext,
+  #left-total-count,
+  #right-total-count {
+    font-size: 1.8rem;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .searchbar-div {
+    width: 240px;
+    height: 40px;
+  }
+}

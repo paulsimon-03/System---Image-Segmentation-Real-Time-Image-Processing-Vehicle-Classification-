@@ -1,0 +1,113 @@
+body {
+  overflow: hidden;
+}
+
+.editForm {
+  background-color: var(--purple-nav);
+  width: 850px;
+  height: fit-content;
+  border-radius: 20px;
+  /* margin: auto; */
+  padding: 30px;
+  box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.2),
+    0 32px 64px -48px rgba(0, 0, 0, 0.5);
+  margin: 180px 100px 30px 400px;
+}
+
+hr {
+  color: #fff;
+}
+
+input,
+label {
+  font-size: 1.7rem;
+  color: #fff;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-group input {
+  /* height: 40px; */
+  font-size: 1.6rem;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.input-group i {
+  color: var(--purple-nav);
+  font-size: 1.5rem;
+}
+
+input:focus {
+  border-color: var(--purple-nav-active);
+}
+
+h4 {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.btn-danger,
+.btn-info {
+  border: none;
+  font-weight: 500;
+  font-size: 1.5rem;
+  width: 100%;
+  height: 30px;
+}
+
+.swal2-popup,
+.swal2-confirm {
+  font-size: 1.6rem !important;
+}
+
+.swal2-icon.swal2-success .swal2-success-ring,
+.swal2-icon.swal2-success [class^="swal2-success-circular-line"],
+.swal2-icon.swal2-success [class*="swal2-success-circular-line"] {
+  font-size: unset !important; /* reset the font size since the styling on styles.css is being used which messes the size of the sweet alerts*/
+}
+
+@media only screen and (max-width: 1300px) {
+  .editForm {
+    width: auto;
+    margin: 180px 80px 30px 280px;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .editForm {
+    margin: 180px 50px 30px 50px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  input,
+  label {
+    font-size: 1.6rem;
+  }
+
+  .input-group input {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.9rem;
+  }
+
+  .btn-danger,
+  .btn-info {
+    font-size: 1.4rem;
+  }
+
+  .swal2-popup,
+  .swal2-confirm {
+    font-size: 1.5rem !important;
+  }
+}

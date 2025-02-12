@@ -1,0 +1,117 @@
+:root {
+  --violet-bg: #381f50;
+  --purple: #8a08a5;
+  --purple-nav: #8616cb;
+  --purple-nav-active: #9e45d5;
+  --purpleicon: #8e36a4;
+  --blue: #49c3fb;
+  --blue2: #65a6fa;
+  --dark-pink: #d0005f;
+  --pink-shadow2: #955d65;
+  --pink-shadow: #eec2ab;
+  --h1-bg: #e3e3e3;
+  --car-chart: #00cadc;
+  --gray: #7c7c7c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-size: 62.5%; */
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--violet-bg);
+  /* height: 100%; */
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerForm {
+  background-color: var(--purple-nav);
+  width: 400px;
+  height: fit-content;
+  border-radius: 20px;
+  /* margin: auto; */
+  padding: 30px;
+  box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.2),
+    0 32px 64px -48px rgba(0, 0, 0, 0.5);
+}
+
+hr {
+  color: #fff;
+}
+
+input,
+label {
+  font-size: 16px;
+  color: #fff;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-group input {
+  /* height: 40px; */
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.input-group i {
+  color: var(--purple-nav);
+}
+
+input:focus {
+  border-color: var(--purple-nav-active);
+}
+
+#registerText {
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.btn-danger,
+.btn-info,
+.btn-primary {
+  /* background-color: var(--car-chart); */
+  border: none;
+  font-weight: 500;
+  width: 100%;
+  height: 35px;
+}
+
+.btn-info {
+  background-color: var(--car-chart);
+}
+
+.btn-danger,
+.btn-danger:hover {
+  background-color: var(--dark-pink);
+  border: none;
+}
+
+.loginspan {
+  color: white;
+  margin-right: 3px;
+}
+
+.loginlink {
+  color: var(--car-chart);
+}
+
+.loggingin {
+  text-align: center;
+}

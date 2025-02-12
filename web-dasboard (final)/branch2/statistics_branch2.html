@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- head, links, src -->
+    <script src="../js/head_fetch.js"></script>
+
+    <!-- for camvasjs chart-->
+    <!-- <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script> -->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <!-- custom styling -->
+    <link rel="stylesheet" href="../css/statistics.css" />
+  </head>
+  <body>
+    <section id="dashboard-title">
+      <!-- call function to show header -->
+      <script src="../js/web_dash.js"></script>
+
+      <div id="profile-section">
+        <!-- call function to show profile/logout -->
+        <script src="../js/profile_section.js"></script>
+      </div>
+
+      <script>
+        document.getElementById("profile-img").addEventListener("click", () => {
+          // redirect to edit account page
+          window.location.href = "edit_useraccount2.html";
+        });
+      </script>
+    </section>
+
+    <!--call date picker function-->
+    <div id="search-calendar">
+      <script src="../js/date_picker.js"></script>
+    </div>
+
+    <section id="navigation-bar">
+      <!-- call function to show navigation bar -->
+      <script src="../js/navigation_branch2.js"></script>
+    </section>
+
+    <section class="chart-section">
+      <h2>Speed Estimation</h2>
+      <div class="charts">
+        <div class="lane-charts">
+          <h3>Left Lane Vehicles</h3>
+          <div class="arrow-next">
+            <button type="button" id="arrow-prev-btn">
+              <img
+                src="../images/icons8-right-arrow-96.png"
+                class="arrow-prev-img"
+                alt="button arrow prev"
+              />
+            </button>
+
+            <span id="vehicle-class"></span>
+            <button type="button" id="arrow-next-btn">
+              <img
+                src="../images/icons8-right-arrow-96.png"
+                class="arrow-next-img"
+                alt="button arrow next"
+              />
+            </button>
+          </div>
+
+          <div class="chart-part">
+            <div id="left-lane-chart"></div>
+          </div>
+        </div>
+
+        <div class="lane-charts">
+          <h3>Right Lane Vehicles</h3>
+
+          <div class="chart-part">
+            <div id="right-lane-chart"></div>
+          </div>
+
+          <h5 class="overall-stats">Overall Statistics (All Classes)</h5>
+
+          <h5>Left Lane</h5>
+          <div class="stats-boxes">
+            <div class="stats-box-out">
+              <div class="stats-box mean-box">
+                <span class="meanstats" id="left-average-flowspeed">km/h</span>
+              </div>
+              <h4 class="stats-title">Mean</h4>
+            </div>
+
+            <div class="stats-box-out">
+              <div class="stats-box median-box">
+                <span class="medianstats" id="left-median">km/h</span>
+              </div>
+              <h4 class="stats-title">Median</h4>
+            </div>
+
+            <div class="stats-box-out">
+              <div class="stats-box mode-box">
+                <span class="modestats" id="left-mode">km/h</span>
+              </div>
+              <h4 class="stats-title">Mode</h4>
+            </div>
+          </div>
+
+          <h5>Right Lane</h5>
+          <div class="stats-boxes">
+            <div class="stats-box-out">
+              <div class="stats-box mean-box">
+                <span class="meanstats" id="right-average-flowspeed">km/h</span>
+              </div>
+              <h4 class="stats-title">Mean</h4>
+            </div>
+
+            <div class="stats-box-out">
+              <div class="stats-box median-box">
+                <span class="medianstats" id="right-median">km/h</span>
+              </div>
+              <h4 class="stats-title">Median</h4>
+            </div>
+
+            <div class="stats-box-out">
+              <div class="stats-box mode-box">
+                <span class="modestats" id="right-mode">km/h</span>
+              </div>
+              <h4 class="stats-title">Mode</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- user logout / check if user is logged in before proceeding to page -->
+    <script src="../js/login_user.js"></script>
+
+    <!-- for fetching data on firebase and chart configurations-->
+    <!-- <script type="module" src="../js/stats2_fetch.js"></script> -->
+    <script type="module" src="../js/stats2_canvasjs.js"></script>
+  </body>
+</html>

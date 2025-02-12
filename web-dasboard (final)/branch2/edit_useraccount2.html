@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- head, links, src -->
+    <script src="../js/head_fetch.js"></script>
+
+    <!-- custom styling -->
+    <link rel="stylesheet" href="../css/edit_user.css" />
+  </head>
+  <body>
+    <section id="dashboard-title">
+      <!-- call function to show header -->
+      <script src="../js/web_dash.js"></script>
+
+      <div id="profile-section">
+        <!-- call function to show profile/logout -->
+        <script src="../js/profile_section.js"></script>
+      </div>
+
+      <script>
+        document.getElementById("profile-img").addEventListener("click", () => {
+          // redirect to edit account page when profile image is clicked
+          window.location.href = "edit_useraccount2.html";
+        });
+      </script>
+    </section>
+
+    <section id="navigation-bar">
+      <!-- call function to show navigation bar -->
+      <script src="../js/navigation_branch2.js"></script>
+    </section>
+
+    <!-- user logout / check if user is logged in before proceeding to page -->
+    <script src="../js/login_user.js"></script>
+
+    <div class="editForm">
+      <h4>Edit User Account</h4>
+      <hr />
+      <form id="editAccountForm">
+        <label for="name">Name</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1"
+            ><i class="fas fa-user"></i
+          ></span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="John Doe"
+            name="givenName"
+            id="givenName"
+            aria-label="Name"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+
+        <label for="userName">Username</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1"
+            ><i class="fas fa-user"></i
+          ></span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="johndoe"
+            name="userName"
+            id="userName"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            required
+          />
+        </div>
+        <br />
+
+        <div class="row">
+          <div class="col-6">
+            <button class="btn btn-info" type="submit" name="submit">
+              Save
+            </button>
+          </div>
+          <div class="col-6">
+            <a href="dashboard_branch2.html"
+              ><button class="btn btn-danger" type="button" name="cancel">
+                Cancel
+              </button></a
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- script for getting data from firebase -->
+    <script type="module">
+      import {
+        collection,
+        getDocs,
+        getDoc,
+        setDoc,
+        updateDoc,
+        doc,
+        db,
+        app,
+      } from "../js/connect.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+
+      const auth = getAuth(app);
+
+      const editAccountForm = document.getElementById("editAccountForm");
+
+      // userInfo global
+      let userInfo;
+
+      // populate form fields with user's current details
+      const populateFormFields = () => {
+        // get user's information from session storage
+        userInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+        // populate form fields with user's current details
+        document.getElementById("givenName").value = userInfo.givenName;
+        document.getElementById("userName").value = userInfo.userName;
+      };
+
+      // call the function to populate form fields when the page loads
+      populateFormFields();
+
+      const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        // get updated details from form
+        const givenName = editAccountForm.givenName.value;
+        const userName = editAccountForm.userName.value;
+
+        console.log(givenName, userName); //for checking
+
+        try {
+          // get the current user
+          const user = auth.currentUser;
+
+          // update user's information in Firestore
+          const userInfoRef = doc(
+            db,
+            "user_accounts",
+            user.uid // use the user's ID as the document ID
+          );
+
+          await updateDoc(userInfoRef, {
+            givenName: givenName,
+            userName: userName,
+          });
+          console.log("Firestore updated successfully");
+
+          // update session storage with the new user information
+          const updatedUserInfo = { ...userInfo, givenName, userName };
+          sessionStorage.setItem("user-info", JSON.stringify(updatedUserInfo));
+
+          // success message
+          await Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Account details updated successfully.",
+            showConfirmButton: true,
+            confirmButtonText: "OK",
+          });
+
+          // redirect to dashboard after a delay
+          setTimeout(() => {
+            window.location.href = "dashboard_branch2.html";
+          }, 500);
+
+          // update the UI with the new username
+          document.getElementById("profile-section").innerHTML =
+            generateProfile(userName);
+        } catch (error) {
+          console.log(error);
+          // error message
+          await Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Failed to update account details. Please try again.",
+            confirmButtonText: "OK",
+          });
+        }
+      };
+
+      // form submission
+      editAccountForm.addEventListener("submit", handleSubmit);
+
+      // populate form with user's current details when page loads
+      populateFormFields();
+    </script>
+  </body>
+</html>

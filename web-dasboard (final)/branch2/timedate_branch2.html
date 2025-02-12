@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- head, links, src -->
+    <script src="../js/head_fetch.js"></script>
+    
+    <link rel="stylesheet" href="../css/time_date.css">
+</head>
+<body>
+    <section id="dashboard-title">
+        <!-- call function to show header -->
+        <script src="../js/web_dash.js"></script>
+
+        <div id="profile-section">
+            <!-- call function to show profile/logout -->
+            <script src="../js/profile_section.js"></script>
+        </div>
+
+        <script>
+            document.getElementById("profile-img").addEventListener("click", () => {
+              // redirect to edit account page
+              window.location.href = "edit_useraccount2.html";
+            });
+        </script>
+    </section> 
+
+    <!-- date picker -->
+    <div id="search-calendar">
+        <span class="todaytext">Select datetime: </span>
+        <div class="searchbar-div">
+            <input type="datetime-local" id="dateinput"/>
+        </div>
+    </div>
+  
+    <section id="navigation-bar">
+          <!-- call function to show navigation bar -->
+          <script src="../js/navigation_branch2.js"></script>
+    </section>
+
+    <section class="piechart-section">
+        <div class="count-text">
+            <span id="total-count">Total Count for Both Lanes: </span>
+        </div>
+
+        <div class="chart-box">
+            <div class="lane-charts">
+                <h3 class="lanetext">Left Lane Vehicles <span id="left-total-count"></span> </h3>
+                <canvas id="left-lane-pie"></canvas>
+            </div>
+
+            <div class="lane-charts">
+                <h3 class="lanetext">Right Lane Vehicles <span id="right-total-count"></span> </h3>
+                <canvas id="right-lane-pie"></canvas>
+            </div>
+        </div>
+    </section>
+</body>
+
+    <!-- user logout / check if user is logged in before proceeding to page -->
+    <script src="../js/login_user.js"></script>
+
+   <!-- fetch data for charts -->
+    <!-- <script type="module" src="../js/timedate2_fetch.js"></script> -->
+    <script type="module" src="../js/timedate2_dbfetch.js"></script>
+</body>
+</html>

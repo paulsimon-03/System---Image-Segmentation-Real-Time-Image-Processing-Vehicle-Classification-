@@ -1,0 +1,11 @@
+{
+ "name": "App",
+ "icons": [
+  {
+   "src": "/icons8-dashboard-cute-color-72.png",
+   "sizes": "72×72",
+   "type": "image/png",
+   "density": "1.5"
+  }
+ ]
+}
